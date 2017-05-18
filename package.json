@@ -1,0 +1,38 @@
+{
+  "name": "campusplacement",
+  "version": "1.0.0",
+  "description": "college placement website for student and companies",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RorschachTest/CollegePlacement.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongoDB",
+    "mongoose",
+    "passportjs",
+    "angular2"
+  ],
+  "author": "Rihazzahir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RorschachTest/CollegePlacement/issues"
+  },
+  "homepage": "https://github.com/RorschachTest/CollegePlacement#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "body-parser": "*",
+    "passport": "*",
+    "passport-jwt": "*"
+  }
+}
