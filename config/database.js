@@ -1,5 +1,4 @@
 module.exports = {
-	student_database: 'mongodb://localhost:27017/student',
-	company_database: 'mongodb://localhost:27017/company',
+	database: 'mongodb://localhost:27017/collegeplacement',
 	secret: 'youshallnotpass'
 }
