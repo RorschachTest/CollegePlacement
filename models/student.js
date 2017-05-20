@@ -24,22 +24,39 @@ const StudentSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: true
+	},
+	jobs:{
+		type: [mongoose.Schema.Types.ObjectId],
+		required: false
 	}
-	// jobs:{
-	// 	type: [mongoose.Schema.Types.ObjectId],
-	// 	required: false;
-	// }
 });
 
 const Student = module.exports = mongoose.model('Student', StudentSchema);
 
+module.exports.getStudentByEnrollment_no = function(enrollment_no, callback){
+	const query = {enrollment_no: enrollment_no};
+	Student.findOne(query, callback);
+}
+
 module.exports.addStudent = function(newStudent, callback){
 	bcrypt.genSalt(10, function(err, salt){
-		if(err) throw err;
 		bcrypt.hash(newStudent.password, salt, function(err, hash){
 			if(err) throw err;
 			newStudent.password = hash;
 			newStudent.save(callback);
 		});
+	});
+}
+
+module.exports.comparePassword = function(candidatePassword, hash, callback){
+
+	bcrypt.compare(candidatePassword, hash, function(err, isMatch){
+		console.log((isMatch? 'in compare match': 'in compare password no match'));
+		try{
+			callback(null, isMatch);
+		}catch(err){
+			console.log('login failed');
+			throw err;
+		}
 	});
 }

@@ -10,6 +10,7 @@ const students = require('./routes/students');
 
 // Connect to database
 mongoose.connect(config.database);
+mongoose.Promise = global.Promise;
 
 // On successful connection
 mongoose.connection.on('connected', function(){
@@ -36,7 +37,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
-// require('./config/passport')(passport);
+require('./config/passport')(passport);
 app.use('/student', students);
 // app.use('/company', companies);
 

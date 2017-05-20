@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Creating Company Schema
-const CompanySchema = new mongoose.schema({
+const CompanySchema = mongoose.schema({
 	name:{
 		type: String,
 		required: true
