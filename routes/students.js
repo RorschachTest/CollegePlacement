@@ -18,14 +18,14 @@ router.post('/register', function(req, res){
 
 	Student.addStudent(newStudent, function(err, student){
 		if(err){
-			console.log('Error mesg: '+err);
+			// console.log('Error mesg: '+err);
 			res.json({success: false, msg: 'Failed to register student'});
 		}
 		else{
 			res.json({success: true, msg: 'Student has been registered'});
 		}
 	});
-}); 
+});
 
 // Authenticate
 router.post('/authenticate', function(req, res){
@@ -38,7 +38,7 @@ router.post('/authenticate', function(req, res){
 			return res.json({success: false, msg: 'Student not found'});
 		}
 
-		console.log(student);
+		// console.log(student);
 
 		Student.comparePassword(password, student.password, function(err, isMatch){
 			if(err) throw err;
@@ -79,7 +79,8 @@ router.get('/signup', function(req, res){
 // Dashboard
 router.get('/dashboard', passport.authenticate('jwt', {session: false}), function(req, res){
 	// render('/dashboard');
-	res.json({student: req.student});
+	// console.log('student is res ' + req);
+	res.json({student: req.user});
 });
 
 module.exports = router;

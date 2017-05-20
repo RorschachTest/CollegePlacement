@@ -25,13 +25,17 @@ const StudentSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	jobs:{
+	jobs_applied:{
 		type: [mongoose.Schema.Types.ObjectId],
 		required: false
 	}
 });
 
 const Student = module.exports = mongoose.model('Student', StudentSchema);
+
+module.exports.getStudentById = function(id, callback){
+	Student.findById(id, callback);
+}
 
 module.exports.getStudentByEnrollment_no = function(enrollment_no, callback){
 	const query = {enrollment_no: enrollment_no};
@@ -51,7 +55,7 @@ module.exports.addStudent = function(newStudent, callback){
 module.exports.comparePassword = function(candidatePassword, hash, callback){
 
 	bcrypt.compare(candidatePassword, hash, function(err, isMatch){
-		console.log((isMatch? 'in compare match': 'in compare password no match'));
+		// console.log((isMatch? 'in compare match': 'in compare password no match'));
 		try{
 			callback(null, isMatch);
 		}catch(err){

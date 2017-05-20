@@ -8,17 +8,19 @@ module.exports = function(passport){
 	opts.jwtFromRequest = ExtractJwt.fromAuthHeader();
 	opts.secretOrKey = config.secret;
 	passport.use(new JwtStrategy(opts, function(jwt_payload, done){
-		console.log(jwt_payload);
-		User.getUserById(jwt_payload._doc._id, function(err, student){
+		// console.log(jwt_payload);
+		Student.getStudentById(jwt_payload._doc._id, function(err, student){
 			if(err){
 				return done(err, false);
 			}
 			if(student){
+				// console.log('student is logged in:\n' +student);
 				return done(null, student);
 			}
 			else{
 				return done(null, false);
 			}
 		});
-	})); 
+	}));
 }
+

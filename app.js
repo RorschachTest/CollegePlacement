@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 
 const config = require('./config/database');
 const students = require('./routes/students');
+const companies = require('./routes/companies');
 
 // Connect to database
 mongoose.connect(config.database);
@@ -39,7 +40,7 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 app.use('/student', students);
-// app.use('/company', companies);
+app.use('/company', companies);
 
 app.get('/', function(req, res){
 	res.send('Link to student or company login');
