@@ -25,6 +25,16 @@ const CompanySchema = mongoose.Schema({
 
 const Company = module.exports = mongoose.model('Company', CompanySchema);
 
+module.exports.getCompanyById = function(id, callback){
+	Company.findById(id, callback);
+}
+
+module.exports.getCompanyByEmail = function(email, callback){
+	let query = {email: email};
+	Company.findOne(query, callback);
+}
+
+
 module.exports.addCompany = function(newCompany, callback){
 	bcrypt.genSalt(10, function(err, salt){
 		bcrypt.hash(newCompany.password, salt, function(err, hash){
@@ -32,5 +42,18 @@ module.exports.addCompany = function(newCompany, callback){
 			newCompany.password = hash;
 			newCompany.save(callback);
 		});
+	});
+}
+
+module.exports.comparePassword = function(candidatePassword, hash, callback){
+
+	bcrypt.compare(candidatePassword, hash, function(err, isMatch){
+		// console.log((isMatch? 'in compare match': 'in compare password no match'));
+		try{
+			callback(null, isMatch);
+		}catch(err){
+			console.log('login failed');
+			throw err;
+		}
 	});
 }

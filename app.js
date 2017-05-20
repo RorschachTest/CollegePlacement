@@ -38,7 +38,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./config/passport')(passport);
+require('./config/passport').student(passport);
 app.use('/student', students);
 app.use('/company', companies);
 

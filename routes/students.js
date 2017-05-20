@@ -79,7 +79,6 @@ router.get('/signup', function(req, res){
 // Dashboard
 router.get('/dashboard', passport.authenticate('jwt', {session: false}), function(req, res){
 	// render('/dashboard');
-	// console.log('student is res ' + req);
 	res.json({student: req.user});
 });
 
