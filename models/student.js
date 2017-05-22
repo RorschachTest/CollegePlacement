@@ -25,9 +25,13 @@ const StudentSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	jobs_applied:{
+	jobs_applied: {
 		type: [mongoose.Schema.Types.ObjectId],
 		required: false
+	},
+	user_type: {
+		type: String,
+		default: 'student'
 	}
 });
 

@@ -20,6 +20,10 @@ const CompanySchema = mongoose.Schema({
 	job_posted: {
 		type: [mongoose.Schema.Types.ObjectId],
 		required: false
+	},
+	user_type: {
+		type: String,
+		default: 'company'
 	}
 });
 
