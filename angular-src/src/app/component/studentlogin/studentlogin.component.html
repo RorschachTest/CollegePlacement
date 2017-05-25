@@ -1,0 +1,13 @@
+<div class="container"  style="width:300px;">
+	<form >
+        <h2 class="form-signin-heading" align="center">Student Login</h2>
+        <label for="inputEnrollmentNumber" class="sr-only">Email address</label>
+ 
+        <input id="inputEnrollmentNumber" class="form-control " placeholder="Enrollment Number" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        
+        <a [routerLink]="['/student/register']">Register new account</a>
+        <button class="btn btn-primary pull-right" type="submit">Login</button>
+    </form>
+</div>

@@ -1,0 +1,14 @@
+<div class="container"  style="width:300px;">
+	<form >
+        <h2 class="form-signin-heading" align="center">Student Registeration</h2>
+        
+        <input id="inputName" class="form-control" placeholder="Full Name" required autofocus>
+        <input id="inputEnrollmentNumber" class="form-control" placeholder="Enrollment Number" required>
+        <input id="inputCgpa" class="form-control" placeholder="Cgpa" required>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>   <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+        
+        <a [routerLink]="['/student/login']">Login</a>
+        <button class="btn btn-primary pull-right" type="submit">Register</button>
+    </form>
+</div>
