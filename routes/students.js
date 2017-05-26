@@ -16,6 +16,8 @@ router.post('/register', function(req, res){
 		password: req.body.password
 	});
 
+	console.log(newStudent);
+
 	Student.addStudent(newStudent, function(err, student){
 		if(err){
 			// console.log('Error mesg: '+err);

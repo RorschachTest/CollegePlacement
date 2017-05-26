@@ -18,6 +18,10 @@ import { CompanyvalidateService } from './services/companyvalidate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { CompanyauthService } from './services/companyauth.service';
 
+import { StudentvalidateService } from './services/studentvalidate.service';
+import { StudentauthService } from './services/studentauth.service';
+
+
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
   {path:'student', component: StudentdashboardComponent},
@@ -49,7 +53,12 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [CompanyvalidateService, CompanyauthService],
+  providers: [
+    CompanyvalidateService, 
+    CompanyauthService, 
+    StudentvalidateService,
+    StudentauthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule{}

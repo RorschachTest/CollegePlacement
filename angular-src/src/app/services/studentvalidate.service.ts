@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class CompanyvalidateService {
+export class StudentvalidateService {
 
 	constructor() { }
 
-	validateRegister(company){
-	  	if(company.name == undefined || company.email == undefined || company.password == undefined){
+	validateRegister(student){
+	  	if(
+	  		student.name == undefined || 
+	  		student.enrollment_no == undefined || 
+	  		student.cgpa ==undefined ||
+	  		student.email_address == undefined || 
+	  		student.password == undefined
+	  	){
 	  		return false;
 	  	}
 	  	else return true;

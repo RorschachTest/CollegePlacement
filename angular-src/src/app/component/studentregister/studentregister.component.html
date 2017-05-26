@@ -1,11 +1,16 @@
 <div class="container"  style="width:400px;">
-	<form >
+	<form (submit) = "onStudentRegister()">
         <h2 class="form-signin-heading" align="center">Student Registeration</h2>
         
-        <input id="inputName" class="form-control" placeholder="Full Name" required autofocus>
-        <input id="inputEnrollmentNumber" class="form-control" placeholder="Enrollment Number" required>
-        <input id="inputCgpa" class="form-control" placeholder="Cgpa" required>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>   <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input id="inputName" [(ngModel)]="name" name="name" class="form-control" placeholder="Full Name" required autofocus>
+
+        <input id="inputEnrollmentNumber" [(ngModel)]="enrollment_no" name="enrollmentno" class="form-control" placeholder="Enrollment Number" required>
+
+        <input id="inputCgpa" [(ngModel)]="cgpa" name="cgpa" class="form-control" placeholder="Cgpa" required>
+
+        <input type="email" [(ngModel)]="email_address" name="email_address" id="inputEmail" class="form-control" placeholder="Email address" required>   
+        
+        <input type="password" [(ngModel)]="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
         
         <a [routerLink]="['/student/login']">Login</a>
