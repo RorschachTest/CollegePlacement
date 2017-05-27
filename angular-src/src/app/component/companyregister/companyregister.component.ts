@@ -47,8 +47,8 @@ export class CompanyregisterComponent implements OnInit {
 		this.companyauthService.registerCompany(company).subscribe(data => {
 			console.log(data);
 			if(data.success){
-				this.flashMessage.show('You have been registered', {cssClass: 'alert-success', timeout: 3000});
-				this.router.navigate(['/company/dashboard']);// Change to company dashboard when jwt local storage is done
+				this.flashMessage.show('You have been registered. Login now to access your account', {cssClass: 'alert-success', timeout: 3000});
+				this.router.navigate(['/company/login']);// Change to company dashboard when jwt local storage is done
 			}
 			else{
 				this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});

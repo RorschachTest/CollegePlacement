@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './component/navbar/navbar.component';
 import { HomeComponent } from './component/home/home.component';
 import { StudentloginComponent } from './component/studentlogin/studentlogin.component';
 import { StudentregisterComponent } from './component/studentregister/studentregister.component';
@@ -37,7 +36,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     HomeComponent,
     StudentloginComponent,
     StudentregisterComponent,

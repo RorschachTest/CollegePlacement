@@ -53,8 +53,8 @@ export class StudentregisterComponent implements OnInit {
 		this.studentauthService.registerStudent(student).subscribe(data => {
 			console.log(data);
 			if(data.success){
-				this.flashMessage.show('You have been registered', {cssClass: 'alert-success', timeout: 3000});
-				this.router.navigate(['/student/dashboard']);// Change to student dashboard when jwt local storage is done
+				this.flashMessage.show('You have been registered, Login now to access your account', {cssClass: 'alert-success', timeout: 3000});
+				this.router.navigate(['/student/login']);// Change to student dashboard when jwt local storage is done
 			}
 			else{
 				this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
