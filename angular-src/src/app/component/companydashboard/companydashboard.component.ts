@@ -6,12 +6,12 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./companydashboard.component.css']
 })
 export class CompanydashboardComponent implements OnInit {
-	job_posted: [any];
 
 	constructor(
 	){}
 
 	ngOnInit() {
+		
 	}
 
 

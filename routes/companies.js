@@ -49,8 +49,7 @@ router.post('/authenticate', function(req, res){
 					company: {
 						id: company._id,
 						name: company.name,
-						enrollment_no: company.enrollment_no,
-						email: company.email_address
+						user_type: company.user_type
 					}
 				});
 			}

@@ -23,18 +23,18 @@ import { StudentvalidateService } from './services/studentvalidate.service';
 import { StudentauthService } from './services/studentauth.service';
 import { CompanynavbarComponent } from './component/companynavbar/companynavbar.component';
 
+import { CompanyauthGuard } from './guards/companyauth.guard';
+import { StudentauthGuard } from './guards/studentauth.guard';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
-  {path:'student', component: StudentdashboardComponent},
   {path:'student/login', component: StudentloginComponent},
   {path:'student/register', component: StudentregisterComponent},
-  {path:'student/dashboard', component: StudentdashboardComponent},
-  {path:'company', component: CompanydashboardComponent},
+  {path:'student/dashboard', component: StudentdashboardComponent, canActivate:[StudentauthGuard]},
   {path:'company/login', component: CompanyloginComponent},
   {path:'company/register', component: CompanyregisterComponent},
-  {path:'company/dashboard', component: CompanydashboardComponent},
-  {path:'company/jobs', component: PostjobsComponent}
+  {path:'company/dashboard', component: CompanydashboardComponent, canActivate:[CompanyauthGuard]},
+  {path:'company/jobs', component: PostjobsComponent, canActivate:[CompanyauthGuard]}
 ]
 
 @NgModule({
@@ -60,9 +60,11 @@ const appRoutes: Routes = [
   providers: [
     CompanyvalidateService,
     CompanyauthService,
+    CompanyauthGuard,
     PostjobService,
     StudentvalidateService,
-    StudentauthService
+    StudentauthService,
+    StudentauthGuard
   ],
   bootstrap: [AppComponent]
 })

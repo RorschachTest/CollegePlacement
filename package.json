@@ -26,12 +26,13 @@
   },
   "homepage": "https://github.com/RorschachTest/CollegePlacement#readme",
   "dependencies": {
-    "express": "^4.15.2",
-    "mongoose": "*",
+    "angular2-jwt": "^0.2.3",
     "bcryptjs": "*",
-    "cors": "*",
-    "jsonwebtoken": "*",
     "body-parser": "*",
+    "cors": "*",
+    "express": "^4.15.2",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
     "passport": "*",
     "passport-jwt": "*"
   }
