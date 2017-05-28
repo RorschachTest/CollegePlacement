@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyauthService } from '../../services/companyauth.service';
-import { Router } from '@angular/router';
-import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
 	selector: 'app-companydashboard',
@@ -9,24 +6,14 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 	styleUrls: ['./companydashboard.component.css']
 })
 export class CompanydashboardComponent implements OnInit {
+	job_posted: [any];
 
 	constructor(
-		private companyauthService: CompanyauthService,
-		private router: Router,
-  		private flashMessage: FlashMessagesService
 	){}
 
 	ngOnInit() {
 	}
 
-	onCompanyLogout(){
-		this.companyauthService.companyLogout();
-		this.flashMessage.show('You are logged out',{
-			cssClass: 'alert-success',
-			timeout: 3000
-		});
-		this.router.navigate(['/']);
-		return false;
-	}
+
 
 }

@@ -15,7 +15,7 @@ export class CompanyregisterComponent implements OnInit {
 	password: String;
 
 	constructor(
-		private companyvalidateService: CompanyvalidateService, 
+		private companyvalidateService: CompanyvalidateService,
 		private flashMessage: FlashMessagesService,
 		private companyauthService: CompanyauthService,
 		private router: Router
@@ -42,7 +42,7 @@ export class CompanyregisterComponent implements OnInit {
 			this.flashMessage.show('invalid email address', {cssClass: 'alert-danger', timout: 3000});
 			return false;
 		}
-		
+
 		// Register company
 		this.companyauthService.registerCompany(company).subscribe(data => {
 			console.log(data);
@@ -58,7 +58,3 @@ export class CompanyregisterComponent implements OnInit {
 	}
 
 }
-
-
-
-			

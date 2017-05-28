@@ -17,7 +17,7 @@ export class StudentregisterComponent implements OnInit {
 	password: String;
 
 	constructor(
-		private studentvalidateService: StudentvalidateService, 
+		private studentvalidateService: StudentvalidateService,
 		private flashMessage: FlashMessagesService,
 		private studentauthService: StudentauthService,
 		private router: Router
@@ -48,7 +48,7 @@ export class StudentregisterComponent implements OnInit {
 			this.flashMessage.show('invalid email address', {cssClass: 'alert-danger', timout: 3000});
 			return false;
 		}
-		
+
 		// Register student
 		this.studentauthService.registerStudent(student).subscribe(data => {
 			console.log(data);

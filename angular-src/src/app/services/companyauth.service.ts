@@ -8,8 +8,8 @@ export class CompanyauthService {
 	company: any;
 
 	constructor(
-	  	private http: Http
-  	){}
+	  private http: Http
+	){}
 
 	// Register new Company
 	registerCompany(company){
@@ -28,7 +28,7 @@ export class CompanyauthService {
 	// Store jwt value in local Storage
 	storeCompanyData(company, token){
 		localStorage.setItem('id_token', token);
-		localStorage.setItem('user', JSON.stringify(company)); // company and student both will be 
+		localStorage.setItem('user', JSON.stringify(company)); // company and student both will be
 		// stored as user as we ccan't determine what type of user it is before asking for user var
 		this.authToken = token;
 		this.company = company;

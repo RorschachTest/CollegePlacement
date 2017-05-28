@@ -12,13 +12,16 @@ import { StudentdashboardComponent } from './component/studentdashboard/studentd
 import { CompanyloginComponent } from './component/companylogin/companylogin.component';
 import { CompanyregisterComponent } from './component/companyregister/companyregister.component';
 import { CompanydashboardComponent } from './component/companydashboard/companydashboard.component';
- 
+import { PostjobsComponent } from './component/postjobs/postjobs.component';
+
 import { CompanyvalidateService } from './services/companyvalidate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { CompanyauthService } from './services/companyauth.service';
+import { PostjobService } from './services/postjob.service';
 
 import { StudentvalidateService } from './services/studentvalidate.service';
 import { StudentauthService } from './services/studentauth.service';
+import { CompanynavbarComponent } from './component/companynavbar/companynavbar.component';
 
 
 const appRoutes: Routes = [
@@ -30,7 +33,8 @@ const appRoutes: Routes = [
   {path:'company', component: CompanydashboardComponent},
   {path:'company/login', component: CompanyloginComponent},
   {path:'company/register', component: CompanyregisterComponent},
-  {path:'company/dashboard', component: CompanydashboardComponent}
+  {path:'company/dashboard', component: CompanydashboardComponent},
+  {path:'company/jobs', component: PostjobsComponent}
 ]
 
 @NgModule({
@@ -43,6 +47,8 @@ const appRoutes: Routes = [
     CompanyloginComponent,
     CompanyregisterComponent,
     CompanydashboardComponent,
+    PostjobsComponent,
+    CompanynavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -52,8 +58,9 @@ const appRoutes: Routes = [
     FlashMessagesModule
   ],
   providers: [
-    CompanyvalidateService, 
-    CompanyauthService, 
+    CompanyvalidateService,
+    CompanyauthService,
+    PostjobService,
     StudentvalidateService,
     StudentauthService
   ],

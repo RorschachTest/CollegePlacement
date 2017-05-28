@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const config = require('../config/database');
 const Company = require('../models/company');
+const Job = require('../models/job');
 
 // Register
 router.post('/register', function(req, res){
@@ -60,9 +61,32 @@ router.post('/authenticate', function(req, res){
 	});
 });
 
+// Dasboard get request
 router.get('/dashboard', passport.authenticate('jwt', {session: false}), function(req, res){
 	// render('/dashboard');
 	res.json({company: req.user});
+});
+
+// Post job by a company
+router.post('/jobs', function(req, res){
+	let newJob = new Job({
+		company_id: req.body.company_id,
+		title: req.body.title,
+		location: req.body.location,
+		description: req.body.description,
+		expected_CTC: req.body.expected_CTC
+	});
+
+	Job.addJob(newJob, function(err, job){
+		if(err){
+			res.json({success: false, msg: 'Error in job posting'});
+		}
+		else{
+			res.json({success: true, msg: 'New job has been posted'});
+			Company.addedByCompany(newJob.company_id, job._id);
+		}
+	});
+
 });
 
 module.exports = router;

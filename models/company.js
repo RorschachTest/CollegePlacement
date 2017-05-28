@@ -61,3 +61,17 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 		}
 	});
 }
+
+module.exports.addedByCompany = function(company_id, job_id){
+	Company.findByIdAndUpdate(company_id,
+		{$push: {"job_posted": job_id}},
+		{safe: true, upsert: false, new: true},
+		function(err, company){
+			if(err) throw err;
+		}
+	);
+
+
+
+
+}
