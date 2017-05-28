@@ -55,8 +55,7 @@ router.post('/authenticate', function(req, res){
 					student: {
 						id: student._id,
 						name: student.name,
-						enrollment_no: student.enrollment_no,
-						email: student.email_address
+						user_type: student.user_type
 					}
 				});
 			}

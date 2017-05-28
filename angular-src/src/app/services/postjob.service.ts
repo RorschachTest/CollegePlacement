@@ -9,11 +9,8 @@ export class PostjobService {
 
   validateForm(job){
     if(
-      job.company_id == undefined ||
-      job.title == undefined ||
-      job.location == undefined ||
-      job.description == undefined ||
-      job.expected_CTC == undefined
+      job.expected_CTC == undefined ||
+      isNaN(job.expected_CTC)
     ){
       return false;
     }

@@ -12,6 +12,7 @@ export class StudentauthGuard implements CanActivate{
 
   canActivate(){
     this.getUserType();
+
     if(this.isLoggedIn()){
       if(this.user_type == 'student'){
         return true;
@@ -32,6 +33,7 @@ export class StudentauthGuard implements CanActivate{
     try {
       var obj = JSON.parse(user);
       if(obj) this.user_type = obj.user_type;
+      else this.user_type = null;
     } catch (ex) {
       console.error(ex);
     }

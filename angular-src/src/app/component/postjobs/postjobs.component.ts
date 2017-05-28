@@ -17,7 +17,8 @@ export class PostjobsComponent implements OnInit {
 
   constructor(
     private postjobService: PostjobService,
-    private flashMessagesService: FlashMessagesService
+    private flashMessagesService: FlashMessagesService,
+    private router: Router
   ){}
 
   ngOnInit() {
@@ -34,7 +35,7 @@ export class PostjobsComponent implements OnInit {
     }
 
     if(!this.postjobService.validateForm(job)){
-      this.flashMessagesService.show('fill all the inputs', {
+      this.flashMessagesService.show('fill correct inputs', {
         cssClass: 'alert-danger',
         timeout: 3000
       });
@@ -42,9 +43,19 @@ export class PostjobsComponent implements OnInit {
     }
 
     this.postjobService.postNewJob(job).subscribe(data => {
-      // if(data.success){
-      //
-      // }
+      if(data.success){
+        this.flashMessagesService.show('job has been posted', {
+          cssClass: 'alert-success',
+          timeout: 3000
+        });
+        this.router.navigate(['/company/dashboard']);
+      }
+      else{
+        this.flashMessagesService.show('Something went wrong', {
+          cssClass: 'alert-danger',
+          timeout: 3000
+        });
+      }
     });
   }
 
@@ -52,7 +63,8 @@ export class PostjobsComponent implements OnInit {
     const user = localStorage.getItem('user');
     try {
       var obj = JSON.parse(user);
-      this.company_id = obj.id;
+      if(obj) this.company_id = obj.id;
+      else this.company_id = null;
     } catch (ex) {
       console.error(ex);
     }

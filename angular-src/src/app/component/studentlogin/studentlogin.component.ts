@@ -30,8 +30,7 @@ export class StudentloginComponent implements OnInit {
 
 		// Authenticate
 		this.studentauthService.authenticateStudent(student).subscribe(data => {
-			console.log(data);
-			
+
 			if(data.success){
 				this.studentauthService.storeStudentData(data.student, data.jwt);
 				this.flashMessage.show('login successful', {cssClass: 'alert-success', timeout: 3000});
