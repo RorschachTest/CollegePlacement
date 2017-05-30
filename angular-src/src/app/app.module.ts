@@ -16,12 +16,13 @@ import { PostjobsComponent } from './component/postjobs/postjobs.component';
 
 import { CompanyvalidateService } from './services/companyvalidate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
-import { CompanyauthService } from './services/companyauth.service';
 import { PostjobService } from './services/postjob.service';
+import { CompanynavbarComponent } from './component/companynavbar/companynavbar.component';
 
 import { StudentvalidateService } from './services/studentvalidate.service';
 import { StudentauthService } from './services/studentauth.service';
-import { CompanynavbarComponent } from './component/companynavbar/companynavbar.component';
+import { CompanyauthService } from './services/companyauth.service';
+import { CompanydashService } from './services/companydash.service';
 
 import { CompanyauthGuard } from './guards/companyauth.guard';
 import { StudentauthGuard } from './guards/studentauth.guard';
@@ -61,6 +62,7 @@ const appRoutes: Routes = [
     CompanyvalidateService,
     CompanyauthService,
     CompanyauthGuard,
+    CompanydashService,
     PostjobService,
     StudentvalidateService,
     StudentauthService,

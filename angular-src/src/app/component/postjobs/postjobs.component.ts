@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostjobService } from '../../services/postjob.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { CompanyauthService } from '../../services/companyauth.service';
 
 @Component({
   selector: 'app-postjobs',
@@ -18,14 +19,15 @@ export class PostjobsComponent implements OnInit {
   constructor(
     private postjobService: PostjobService,
     private flashMessagesService: FlashMessagesService,
-    private router: Router
+    private router: Router,
+    private companyauthService: CompanyauthService
   ){}
 
   ngOnInit() {
   }
 
   postJob(){
-    this.getCompanyId();
+    this.company_id = this.companyauthService.getCompanyId();
     const job = {
       company_id: this.company_id,
       title: this.title,
@@ -59,17 +61,7 @@ export class PostjobsComponent implements OnInit {
     });
   }
 
-  getCompanyId(){
-    const user = localStorage.getItem('user');
-    try {
-      var obj = JSON.parse(user);
-      if(obj) this.company_id = obj.id;
-      else this.company_id = null;
-    } catch (ex) {
-      console.error(ex);
-    }
 
-  }
 
 
 

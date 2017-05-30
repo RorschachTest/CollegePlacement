@@ -30,6 +30,10 @@ const JobSchema = mongoose.Schema({
 
 const Job = module.exports = mongoose.model('Job', JobSchema);
 
+module.exports.getJobById = function(job_id, callback){
+	Job.findById(job_id, callback);
+}
+
 module.exports.addJob = function(newJob, callback){
 	try{
 		newJob.save(callback);

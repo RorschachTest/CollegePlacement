@@ -36,9 +36,22 @@ export class CompanyauthService {
 		this.company = company;
 	}
 
+	getCompanyId(){
+    const user = localStorage.getItem('user');
+    try {
+      var obj = JSON.parse(user);
+      if(obj) return obj.id;
+      else return null;
+    } catch (ex) {
+      console.error(ex);
+    }
+  }
+
 	companyLogout(){
 		this.authToken = null;
 		this.company = null;
 		localStorage.clear();
 	}
+
+
 }

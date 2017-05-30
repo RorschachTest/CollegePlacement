@@ -66,6 +66,41 @@ router.get('/dashboard', passport.authenticate('jwt', {session: false}), functio
 	res.json({company: req.user});
 });
 
+router.post('/postedjobs', function(req, res){
+
+	Company.getCompanyById(req.body._id, function(err, company){
+		if(err){
+			res.json({success: false, jobs: null});
+		}
+		else{
+
+			try{
+				var jobs = [];
+				company.job_posted.forEach(function(job_id){
+					Job.findById(job_id, function(err, job){
+						if(err){
+							throw(err);
+						}
+						else{
+							jobs.push({
+								title: job.title,
+								location: job.location,
+								description: job.description,
+								expected_CTC: job.expected_CTC
+							});
+						}
+					});
+				});
+				//problem with the scope of jobs
+				res.json({success: true, jobs: jobs});
+			}
+			catch(err){
+				res.json({success: false, jobs: []});
+			}
+		}
+	});
+});
+
 // Post job by a company
 router.post('/jobs', function(req, res){
 	let newJob = new Job({
@@ -85,7 +120,6 @@ router.post('/jobs', function(req, res){
 			Company.addedByCompany(newJob.company_id, job._id);
 		}
 	});
-
 });
 
 module.exports = router;
