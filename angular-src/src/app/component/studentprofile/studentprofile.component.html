@@ -20,13 +20,18 @@
 	    </div>
 	</div>
 </nav>
+<div class="container"  style="width:400px;">
+	<form (submit) = "onProfileUpdate()">
+        <h2 class="form-signin-heading" align="center">Student Profile</h2>
 
-<div class="row">
-	<div class="col-md-4 rounded" *ngFor="let job of all_jobs">
-		<h3>{{job.title}}</h3>
-    <small class="text-muted">{{job.location}}</small>
-    <p style="height: 3em; overflow: hidden;">{{job.description}}</p>
-    <small class="text-muted">CTC:  Rs {{job.expected_CTC}}</small>
-		  <button [disabled]="applied.has(job._id)" class="btn btn-primary btn-sm pull-right" (click)="applyForJob(job._id)">Apply</button>
-	</div>
+        <input id="inputName" [(ngModel)]="name" name="name" class="form-control" placeholder={{name}} disabled>
+
+        <input id="inputEnrollmentNumber" [(ngModel)]="enrollment_no" name="enrollmentno" class="form-control" placeholder={{enrollment_no}} disabled>
+
+        <input id="inputCgpa" [(ngModel)]="cgpa" name="cgpa" class="form-control" placeholder={{cgpa}} disabled>
+
+        <input type="email" [(ngModel)]="email_address" name="email_address" id="inputEmail" class="form-control" placeholder={{email_address}} disabled>
+
+        <button class="btn btn-primary pull-right" type="submit">Upadate Profile</button>
+    </form>
 </div>

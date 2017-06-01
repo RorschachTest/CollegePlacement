@@ -41,3 +41,15 @@ module.exports.addJob = function(newJob, callback){
 		console.error(ex);
 	}
 }
+
+module.exports.studentApplied = function(job_id, student_id, callback){
+	Job.findByIdAndUpdate(job_id,
+		{$push: {"students_applied": student_id}},
+		{safe: true, upsert: false, new: true},
+		callback
+	);
+}
+
+module.exports.getAllJobs = function(callback){
+	Job.find({}, callback);
+}

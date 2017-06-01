@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const Company = require('../models/company');
 const Job = require('../models/job');
+const Student = require('../models/student');
 
 // Register
 router.post('/register', function(req, res){
@@ -73,26 +74,27 @@ router.post('/postedjobs', function(req, res){
 			res.json({success: false, jobs: null});
 		}
 		else{
-
 			try{
-				var jobs = [];
+				const result = [];
 				company.job_posted.forEach(function(job_id){
-					Job.findById(job_id, function(err, job){
+					Job.getJobById(job_id, function(err, job){
 						if(err){
 							throw(err);
-						}
-						else{
-							jobs.push({
+						} else{
+							result.push({
 								title: job.title,
 								location: job.location,
 								description: job.description,
-								expected_CTC: job.expected_CTC
+								expected_CTC: job.expected_CTC,
 							});
+							if(result.length === company.job_posted.length){
+								res.json({success: true, jobs: result});
+							}
 						}
+						// console.log(jobs);
 					});
 				});
 				//problem with the scope of jobs
-				res.json({success: true, jobs: jobs});
 			}
 			catch(err){
 				res.json({success: false, jobs: []});

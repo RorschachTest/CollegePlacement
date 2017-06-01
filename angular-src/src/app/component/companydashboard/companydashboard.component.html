@@ -1,4 +1,9 @@
 <app-companynavbar></app-companynavbar>
-<p>
-  companydashboard works!
-</p>
+<div class="col">
+	<div class="col-md-4 rounded" *ngFor="let job of jobs_posted">
+		<h3>{{job.title}}</h3>
+    <small class="text-muted">{{job.location}}</small>
+    <p>{{job.description}}</p>
+    <small class="text-muted">CTC:  Rs {{job.expected_CTC}}</small>
+	</div>
+</div>

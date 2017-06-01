@@ -71,6 +71,4 @@ module.exports.addedByCompany = function(company_id, job_id){
 		}
 	);
 
-
-
 }

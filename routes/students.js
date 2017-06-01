@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const config = require('../config/database');
 const Student = require('../models/student');
+const Job = require('../models/job');
 
 // Register
 router.post('/register', function(req, res){
@@ -66,6 +67,17 @@ router.post('/authenticate', function(req, res){
 	});
 });
 
+// Get all jobs info request
+router.get('/jobs', function(req, res){
+	Job.getAllJobs(function(err, data){
+		if(err){
+			res.json({success: false, jobs: null});
+		}
+		else{
+			res.json({success: true, jobs: data});
+		}
+	});
+});
 
 // Login request
 router.get('/login', function(req, res){
@@ -81,6 +93,44 @@ router.get('/signup', function(req, res){
 router.get('/dashboard', passport.authenticate('jwt', {session: false, failureRedirect: '/login'}), function(req, res){
 	// render('/dashboard');
 	res.json({student: req.user});
+});
+
+// Profile Update
+// router.post('/update', function(req, res){
+//
+// });
+
+// Get ProfileInfo
+router.post('/profile', function(req, res){
+	Student.getStudentById(req.body._id, function(err, student){
+		if(err){
+			res.json({success: false, student: null});
+		}
+		else{
+			res.json({success: true, student: student});
+		}
+	});
+});
+
+// Apply for job
+router.post('/apply', function(req, res){
+	console.log('job application received');
+	const job_id = req.body.job_id;
+	const student_id = req.body.student_id;
+	Student.applyForJob(job_id, student_id, function(err, student){
+		if(err){
+			res.json({success: false});
+		}
+		else{
+			console.log('Student post successful');
+			Job.studentApplied(job_id, student_id, function(err, student){
+				if(err){
+					res.json({success: false});
+				}
+				else res.json({success: true});
+			});
+		}
+	});
 });
 
 module.exports = router;

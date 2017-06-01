@@ -68,3 +68,15 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 		}
 	});
 }
+
+module.exports.applyForJob = function(job_id, student_id, callback){
+	Student.findByIdAndUpdate(
+		student_id,
+		{$push: {'jobs_applied': job_id}},
+		{safe: true, upsert: false, new: true},
+		callback
+	);
+}
+
+//
+// module.exports.updateProfile = function()

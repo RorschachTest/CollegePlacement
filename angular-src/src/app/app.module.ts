@@ -21,17 +21,20 @@ import { CompanynavbarComponent } from './component/companynavbar/companynavbar.
 
 import { StudentvalidateService } from './services/studentvalidate.service';
 import { StudentauthService } from './services/studentauth.service';
+import { StudentprofileService } from './services/studentprofile.service';
 import { CompanyauthService } from './services/companyauth.service';
 import { CompanydashService } from './services/companydash.service';
 
 import { CompanyauthGuard } from './guards/companyauth.guard';
 import { StudentauthGuard } from './guards/studentauth.guard';
+import { StudentprofileComponent } from './component/studentprofile/studentprofile.component';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
   {path:'student/login', component: StudentloginComponent},
   {path:'student/register', component: StudentregisterComponent},
   {path:'student/dashboard', component: StudentdashboardComponent, canActivate:[StudentauthGuard]},
+  {path:'student/profile', component: StudentprofileComponent, canActivate:[StudentauthGuard]},
   {path:'company/login', component: CompanyloginComponent},
   {path:'company/register', component: CompanyregisterComponent},
   {path:'company/dashboard', component: CompanydashboardComponent, canActivate:[CompanyauthGuard]},
@@ -49,7 +52,9 @@ const appRoutes: Routes = [
     CompanyregisterComponent,
     CompanydashboardComponent,
     PostjobsComponent,
-    CompanynavbarComponent
+    CompanynavbarComponent,
+    StudentprofileComponent,
+    StudentprofileComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +71,8 @@ const appRoutes: Routes = [
     PostjobService,
     StudentvalidateService,
     StudentauthService,
-    StudentauthGuard
+    StudentauthGuard,
+    StudentprofileService
   ],
   bootstrap: [AppComponent]
 })

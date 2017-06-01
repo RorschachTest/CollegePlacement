@@ -35,9 +35,32 @@ export class StudentauthService {
 		this.student = student;
 	}
 
+	getStudentId(){
+    const user = localStorage.getItem('user');
+    try {
+      var obj = JSON.parse(user);
+      if(obj) return obj.id;
+      else return null;
+    } catch (ex) {
+      console.error(ex);
+    }
+	}
+
+	applyForJob(job_id, student_id){
+		let headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		const apply_job = {
+		 job_id: job_id,
+		 student_id: student_id
+	 	}
+		return this.http.post('http://localhost:5000/student/apply', apply_job, {headers: headers}).map(res => res.json());
+	}
+
+
 	studentLogout(){
 		this.authToken = null;
 		this.student = null;
 		localStorage.clear();
 	}
+
 }

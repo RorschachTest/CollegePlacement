@@ -1,11 +1,11 @@
 <div class="container"  style="width:400px;">
 	<form (submit) = "onStudentLogin()">
         <h2 class="form-signin-heading" align="center">Student Login</h2>
- 
+
         <input id="inputEnrollmentNumber" [(ngModel)]="enrollment_no" name="enrollment_no" class="form-control " placeholder="Enrollment Number" required autofocus>
 
         <input id="inputPassword" [(ngModel)]="password" name="password" type="password" class="form-control" placeholder="Password" required>
-        
+
         <a [routerLink]="['/student/register']">Register new account</a>
         <button class="btn btn-primary pull-right" type="submit">Login</button>
     </form>
