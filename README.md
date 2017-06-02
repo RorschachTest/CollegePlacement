@@ -33,3 +33,17 @@ however unregister for the website of unregister their job application.
 * `bcrypt.js` for password hashing and verification
 * `angular-jwt` for authGuard
 * `nodemon` for server rs
+
+## Snapshot
+
+
+![companyDashboard](https://cloud.githubusercontent.com/assets/26198774/26725819/f2cd18d4-47bd-11e7-9c56-30cee7a721b4.png)
+
+
+![postJob](https://cloud.githubusercontent.com/assets/26198774/26725852/19bf4732-47be-11e7-9bfa-6054066474c0.png)
+
+
+![studentDashboard](https://cloud.githubusercontent.com/assets/26198774/26725885/3d8536c2-47be-11e7-9f50-bcc1a597f4bc.png)
+
+
+
