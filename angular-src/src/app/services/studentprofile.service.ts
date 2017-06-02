@@ -32,6 +32,6 @@ export class StudentprofileService {
     const student = {
       _id: student_id
     }
-    return this.http.post('http://localhost:5000/student/profile', student, {headers: headers}).map(res => res.json());
+    return this.http.post('student/profile', student, {headers: headers}).map(res => res.json());
   }
 }
