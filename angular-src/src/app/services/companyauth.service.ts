@@ -28,7 +28,7 @@ export class CompanyauthService {
 
 	// Store jwt value in local Storage
 	storeCompanyData(company, token){
-		console.log('data stored: '+company);
+		localStorage.clear();
 		localStorage.setItem('id_token', token);
 		localStorage.setItem('user', JSON.stringify(company)); // company and student both will be
 		// stored as user as we ccan't determine what type of user it is before asking for user var

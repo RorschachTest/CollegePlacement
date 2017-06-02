@@ -14,7 +14,7 @@ mongoose.connect(config.database);
 mongoose.Promise = global.Promise;
 
 // On successful connection
-mongoose.connection.on('connected', function(){ 
+mongoose.connection.on('connected', function(){
 	console.log('connected to database '+config.database);
 });
 
@@ -45,6 +45,10 @@ app.use('/company', companies);
 
 app.get('/', function(req, res){
 	res.send('Link to student or company login');
+});
+
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 // Set port value

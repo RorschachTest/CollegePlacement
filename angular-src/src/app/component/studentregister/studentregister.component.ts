@@ -35,7 +35,6 @@ export class StudentregisterComponent implements OnInit {
 			password : this.password
 		}
 
-		console.log(student);
 
 		// Required field
 		if(!this.studentvalidateService.validateRegister(student)){
@@ -51,7 +50,6 @@ export class StudentregisterComponent implements OnInit {
 
 		// Register student
 		this.studentauthService.registerStudent(student).subscribe(data => {
-			console.log(data);
 			if(data.success){
 				this.flashMessage.show('You have been registered, Login now to access your account', {cssClass: 'alert-success', timeout: 3000});
 				this.router.navigate(['/student/login']);// Change to student dashboard when jwt local storage is done

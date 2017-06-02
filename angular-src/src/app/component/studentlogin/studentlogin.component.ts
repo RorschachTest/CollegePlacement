@@ -26,7 +26,6 @@ export class StudentloginComponent implements OnInit {
 			enrollment_no: this.enrollment_no,
 			password: this.password
 		}
-		console.log(student);
 
 		// Authenticate
 		this.studentauthService.authenticateStudent(student).subscribe(data => {

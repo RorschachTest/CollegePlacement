@@ -29,8 +29,6 @@ export class CompanyloginComponent implements OnInit {
 
 		// Authenticate
 		this.companyauthService.authenticateCompany(company).subscribe(data => {
-			console.log(data);
-
 			if(data.success){
 				this.companyauthService.storeCompanyData(data.company, data.jwt);
 				this.flashMessage.show('login successful', {cssClass: 'alert-success', timeout: 3000});
