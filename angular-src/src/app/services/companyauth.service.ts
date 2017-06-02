@@ -36,6 +36,15 @@ export class CompanyauthService {
 		this.company = company;
 	}
 
+	getStudentApplied(job_id){
+		let headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		const job = {
+			_id: job_id
+		}
+		return this.http.post('http://localhost:5000/company/showjobs', job, {headers: headers}).map(res => res.json());
+	}
+
 	getCompanyId(){
     const user = localStorage.getItem('user');
     try {

@@ -28,6 +28,7 @@ import { CompanydashService } from './services/companydash.service';
 import { CompanyauthGuard } from './guards/companyauth.guard';
 import { StudentauthGuard } from './guards/studentauth.guard';
 import { StudentprofileComponent } from './component/studentprofile/studentprofile.component';
+import { ShowjobsComponent } from './component/showjobs/showjobs.component';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
   {path:'company/login', component: CompanyloginComponent},
   {path:'company/register', component: CompanyregisterComponent},
   {path:'company/dashboard', component: CompanydashboardComponent, canActivate:[CompanyauthGuard]},
-  {path:'company/jobs', component: PostjobsComponent, canActivate:[CompanyauthGuard]}
+  {path:'company/jobs', component: PostjobsComponent, canActivate:[CompanyauthGuard]},
+  {path:'company/showjobs', component: ShowjobsComponent, canActivate:[CompanyauthGuard]}
 ]
 
 @NgModule({
@@ -54,7 +56,8 @@ const appRoutes: Routes = [
     PostjobsComponent,
     CompanynavbarComponent,
     StudentprofileComponent,
-    StudentprofileComponent
+    StudentprofileComponent,
+    ShowjobsComponent
   ],
   imports: [
     BrowserModule,

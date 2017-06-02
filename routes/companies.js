@@ -82,6 +82,7 @@ router.post('/postedjobs', function(req, res){
 							throw(err);
 						} else{
 							result.push({
+								_id: job._id,
 								title: job.title,
 								location: job.location,
 								description: job.description,
@@ -94,7 +95,7 @@ router.post('/postedjobs', function(req, res){
 						// console.log(jobs);
 					});
 				});
-				//problem with the scope of jobs
+				//problem with the scope of jobs -no problem was with sync
 			}
 			catch(err){
 				res.json({success: false, jobs: []});
@@ -123,5 +124,44 @@ router.post('/jobs', function(req, res){
 		}
 	});
 });
+
+// Show student applied in a company
+router.post('/showjobs', function(req, res){
+	console.log('showing jobs');
+	let job_id = req.body._id;
+	Job.getJobById(job_id, function(err, job){
+		if(err){
+			res.json({success: false, students: null});
+		}
+		else{
+			try{
+					const result = [];
+					job.students_applied.forEach(function(student_id){
+						Student.getStudentById(student_id, function(err, student){
+							if(err){
+								throw (err);
+							} else{
+								result.push({
+									name: student.name,
+									cgpa: student.cgpa,
+									email_address: student.email_address
+								});
+								if(result.length === job.students_applied.length){
+									res.json({success: true, students: result});
+								}
+							}
+							// console.log(jobs);
+						});
+					});
+			} catch(err){
+				res.json({success: false, students: null});
+			}
+		}
+	});
+});
+
+
+
+
 
 module.exports = router;

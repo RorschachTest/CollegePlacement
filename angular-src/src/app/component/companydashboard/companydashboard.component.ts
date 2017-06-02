@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CompanydashService } from '../../services/companydash.service';
 import { CompanyauthService } from '../../services/companyauth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-companydashboard',
@@ -15,7 +16,8 @@ export class CompanydashboardComponent implements OnInit {
 	constructor(
 		private companyauthService: CompanyauthService,
 		private companydashService: CompanydashService,
-		private flashMessage: FlashMessagesService
+		private flashMessage: FlashMessagesService,
+		private router: Router
 	){}
 
 	ngOnInit() {
@@ -39,6 +41,16 @@ export class CompanydashboardComponent implements OnInit {
 					'something went wrong',
 					{cssClass : 'alert-danger', timeout: 3000}
 				);
+			}
+		});
+	}
+
+	showAppliedStudent(job_id){
+		this.companyauthService.getStudentApplied(job_id).subscribe(data => {
+			console.log(data);
+			if(data.success){
+				localStorage.setItem('students', JSON.stringify(data.students));
+				this.router.navigate(['/company/showjobs']);
 			}
 		});
 	}

@@ -3,7 +3,8 @@
 	<div class="col-md-4 rounded" *ngFor="let job of jobs_posted">
 		<h3>{{job.title}}</h3>
     <small class="text-muted">{{job.location}}</small>
-    <p>{{job.description}}</p>
+    <p style="height: 3em; overflow: hidden;">{{job.description}}</p>
     <small class="text-muted">CTC:  Rs {{job.expected_CTC}}</small>
+		  <button class="btn btn-primary btn-sm pull-right" (click)="showAppliedStudent(job._id)">show student</button>
 	</div>
 </div>

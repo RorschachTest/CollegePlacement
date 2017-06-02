@@ -1,0 +1,8 @@
+<app-companynavbar></app-companynavbar>
+<div class="col">
+	<div class="col-md-4 rounded" *ngFor="let student of students">
+		<h4>{{student.name}}</h4>
+    <small class="text-muted">{{student.email_address}}</small>
+    <p>cgpa: {{student.cgpa}}/10</p>
+	</div>
+</div>
