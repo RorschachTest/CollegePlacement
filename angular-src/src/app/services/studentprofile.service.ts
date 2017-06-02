@@ -23,7 +23,7 @@ export class StudentprofileService {
   getJobs(){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:5000/student/jobs', {headers: headers}).map(res => res.json());
+    return this.http.get('student/jobs', {headers: headers}).map(res => res.json());
   }
 
   getStudentInfo(student_id){

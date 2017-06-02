@@ -20,6 +20,6 @@ export class PostjobService {
   postNewJob(job){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:5000/company/jobs', job, {headers: headers}).map(res => res.json());
+    return this.http.post('company/jobs', job, {headers: headers}).map(res => res.json());
   }
 }

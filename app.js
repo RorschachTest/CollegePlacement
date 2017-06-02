@@ -52,9 +52,9 @@ app.get('*', (req, res) => {
 });
 
 // Set port value
-const PORT = 5000;
+const port = process.env.PORT || 8080;
 
 // Start server
-app.listen(PORT, function(){
-	console.log('listening to '+PORT);
+app.listen(port, function(){
+	console.log('listening to ' + port);
 });

@@ -29,13 +29,13 @@ var StudentauthService = (function () {
     StudentauthService.prototype.registerStudent = function (student) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:5000/student/register', student, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('student/register', student, { headers: headers }).map(function (res) { return res.json(); });
     };
     // Authenticate login for existing user
     StudentauthService.prototype.authenticateStudent = function (student) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:5000/student/authenticate', student, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('student/authenticate', student, { headers: headers }).map(function (res) { return res.json(); });
     };
     // Store jwt value in local Storage
     StudentauthService.prototype.storeStudentData = function (student, token) {
@@ -66,7 +66,7 @@ var StudentauthService = (function () {
             job_id: job_id,
             student_id: student_id
         };
-        return this.http.post('http://localhost:5000/student/apply', apply_job, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('student/apply', apply_job, { headers: headers }).map(function (res) { return res.json(); });
     };
     StudentauthService.prototype.studentLogout = function () {
         this.authToken = null;
@@ -125,7 +125,7 @@ var StudentprofileService = (function () {
     StudentprofileService.prototype.getJobs = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:5000/student/jobs', { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.get('student/jobs', { headers: headers }).map(function (res) { return res.json(); });
     };
     StudentprofileService.prototype.getStudentInfo = function (student_id) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
@@ -174,7 +174,7 @@ var CompanydashService = (function () {
     CompanydashService.prototype.getJobsPosted = function (company) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:5000/company/postedjobs', company, { headers: headers })
+        return this.http.post('company/postedjobs', company, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     CompanydashService = __decorate([
@@ -264,7 +264,7 @@ var PostjobService = (function () {
     PostjobService.prototype.postNewJob = function (job) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:5000/company/jobs', job, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('company/jobs', job, { headers: headers }).map(function (res) { return res.json(); });
     };
     PostjobService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
@@ -1617,13 +1617,13 @@ var CompanyauthService = (function () {
     CompanyauthService.prototype.registerCompany = function (company) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:5000/company/register', company, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('company/register', company, { headers: headers }).map(function (res) { return res.json(); });
     };
     // Authenticate login for existing user
     CompanyauthService.prototype.authenticateCompany = function (company) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:5000/company/authenticate', company, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('company/authenticate', company, { headers: headers }).map(function (res) { return res.json(); });
     };
     // Store jwt value in local Storage
     CompanyauthService.prototype.storeCompanyData = function (company, token) {
@@ -1640,7 +1640,7 @@ var CompanyauthService = (function () {
         var job = {
             _id: job_id
         };
-        return this.http.post('http://localhost:5000/company/showjobs', job, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('company/showjobs', job, { headers: headers }).map(function (res) { return res.json(); });
     };
     CompanyauthService.prototype.getCompanyId = function () {
         var user = localStorage.getItem('user');

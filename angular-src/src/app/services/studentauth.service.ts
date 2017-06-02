@@ -15,14 +15,14 @@ export class StudentauthService {
 	registerStudent(student){
 		let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
-		return this.http.post('http://localhost:5000/student/register', student, {headers: headers}).map(res => res.json());
+		return this.http.post('student/register', student, {headers: headers}).map(res => res.json());
 	}
 
 	// Authenticate login for existing user
 	authenticateStudent(student){
 		let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
-		return this.http.post('http://localhost:5000/student/authenticate', student, {headers: headers}).map(res => res.json());
+		return this.http.post('student/authenticate', student, {headers: headers}).map(res => res.json());
 	}
 
 	// Store jwt value in local Storage
@@ -53,7 +53,7 @@ export class StudentauthService {
 		 job_id: job_id,
 		 student_id: student_id
 	 	}
-		return this.http.post('http://localhost:5000/student/apply', apply_job, {headers: headers}).map(res => res.json());
+		return this.http.post('student/apply', apply_job, {headers: headers}).map(res => res.json());
 	}
 
 

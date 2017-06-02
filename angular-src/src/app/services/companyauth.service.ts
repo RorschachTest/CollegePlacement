@@ -16,14 +16,14 @@ export class CompanyauthService {
 	registerCompany(company){
 		let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
-		return this.http.post('http://localhost:5000/company/register', company, {headers: headers}).map(res => res.json());
+		return this.http.post('company/register', company, {headers: headers}).map(res => res.json());
 	}
 
 	// Authenticate login for existing user
 	authenticateCompany(company){
 		let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
-		return this.http.post('http://localhost:5000/company/authenticate', company, {headers: headers}).map(res => res.json());
+		return this.http.post('company/authenticate', company, {headers: headers}).map(res => res.json());
 	}
 
 	// Store jwt value in local Storage
@@ -42,7 +42,7 @@ export class CompanyauthService {
 		const job = {
 			_id: job_id
 		}
-		return this.http.post('http://localhost:5000/company/showjobs', job, {headers: headers}).map(res => res.json());
+		return this.http.post('company/showjobs', job, {headers: headers}).map(res => res.json());
 	}
 
 	getCompanyId(){
