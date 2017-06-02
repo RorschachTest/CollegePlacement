@@ -133,7 +133,7 @@ var StudentprofileService = (function () {
         var student = {
             _id: student_id
         };
-        return this.http.post('http://localhost:5000/student/profile', student, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('student/profile', student, { headers: headers }).map(function (res) { return res.json(); });
     };
     StudentprofileService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 

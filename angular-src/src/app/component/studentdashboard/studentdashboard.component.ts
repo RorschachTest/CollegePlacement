@@ -29,8 +29,7 @@ export class StudentdashboardComponent implements OnInit {
 			if(data.success){
 				this.jobs_applied = data.student.jobs_applied;
 
-
-				this.jobs_applied.forEach(job_id =>{
+				this.jobs_applied.forEach(job_id => {
 					this.applied.add(job_id);
 				});
 			}
