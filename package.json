@@ -17,7 +17,8 @@
     "mongoDB",
     "mongoose",
     "passportjs",
-    "angular2"
+    "angular2",
+    "angularFlashMessages"
   ],
   "author": "Rihazzahir",
   "license": "ISC",
